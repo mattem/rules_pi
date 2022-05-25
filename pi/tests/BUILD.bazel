@@ -1,0 +1,19 @@
+load("//pi:defs.bzl", "pi")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+pi(
+    name = "pi_100",
+    scale = 100,
+)
+
+pi(
+    name = "pi_default",
+)
+
+write_source_files(
+    name = "tests",
+    files = {
+        "expected_pi_100": ":pi_100",
+        "expected_pi_default": ":pi_default",
+    },
+)
